@@ -32,7 +32,6 @@ xcuserdata
 
 *.pyc
 *sync/
-Icon?
 .tags*
 
 build/
