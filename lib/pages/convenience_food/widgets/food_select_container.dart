@@ -48,31 +48,32 @@ class FoodSelectContainer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      width: 350,
-      height: 150,
+      width: 330,
+      height: 120,
       decoration: BoxDecoration(
         color: isSelect ? dalgeurakBlueOne : Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 14, bottom: 14),
+      margin: const EdgeInsets.only(bottom: 15),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("${foodType.convertKor}", style: foodSelectContainer_foodName.copyWith(color: (isSelect ? Colors.white : Colors.black))),
-                SizedBox(height: 15),
+                SizedBox(height: 8),
                 Text("${foodType.convertDescription}", style: foodSelectContainer_foodDescription.copyWith(color: (isSelect ? Colors.white : Colors.black))),
-                SizedBox(height: 20),
+                SizedBox(height: 14),
                 Text("남은 인원 : $leftPeopleAmount명", style: foodSelectContainer_leftPeople.copyWith(color: (isSelect ? Colors.white : Colors.black)))
               ],
             ),
             Image.asset(
               "assets/images/convenience_${foodType.convertEng}.png",
-              width: 100,
+              width: 80,
             )
           ],
         )

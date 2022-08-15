@@ -137,7 +137,7 @@ class MealCancelPage extends GetView<MealCancelPageController> {
               ),
               Positioned(
                   bottom: Get.height * 0.12,
-                  child: BlueButton(content: "신청", isLong: false, isFill: true)
+                  child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
               )
             ],
           )
