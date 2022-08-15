@@ -73,14 +73,14 @@ class ConvenienceFoodPage extends GetView<ConvenienceFoodPageController> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: menuList.length,
                       itemBuilder: (context, index) {
-                        return GestureDetector(
+                        return Obx(() => GestureDetector(
                           onTap: () => controller.selectConvenienceFoodType.value = menuList[index],
                           child: FoodSelectContainer(
                               foodType: menuList[index],
                               leftPeopleAmount: 50,
                               isSelect: controller.selectConvenienceFoodType.value == menuList[index]
                           ),
-                        );
+                        ));
                       },
                     ),
                   );
