@@ -21,6 +21,12 @@ class PageListPage extends StatelessWidget {
             },
             child: const Text("CONVENIENCEFOOD"),
           ),
+          TextButton(
+            onPressed: () {
+              Get.toNamed(Routes.MEALCANCEL);
+            },
+            child: const Text("MEALCANCEL"),
+          ),
         ],
       ),
     );

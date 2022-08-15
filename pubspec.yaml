@@ -36,6 +36,8 @@ dependencies:
 
   dimigoin_flutter_plugin: ^0.3.6
 
+  syncfusion_flutter_datepicker: ^20.2.43
+
 
   get: ^4.6.5
 

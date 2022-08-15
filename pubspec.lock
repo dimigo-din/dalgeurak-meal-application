@@ -49,16 +49,16 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   dalgeurak_widget_package:
     dependency: "direct main"
     description:
       path: "."
       ref: main
-      resolved-ref: "4ed68fb13119c34a34582d2d12e17594f5ea97ad"
+      resolved-ref: "7c041daba3d642e5ac57a3b65afd98f11368b397"
       url: "https://github.com/dimigoin/dalgeurak-widget-package.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.2"
   dimigoin_flutter_plugin:
     dependency: "direct main"
     description:
@@ -172,6 +172,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   js:
     dependency: transitive
     description:
@@ -296,6 +303,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "20.2.43"
+  syncfusion_flutter_datepicker:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_datepicker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "20.2.43"
   term_glyph:
     dependency: transitive
     description:
