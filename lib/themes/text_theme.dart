@@ -13,3 +13,6 @@ const convenienceFood_menuTitle = TextStyle(
 
 const containerMenu = TextStyle(
     fontSize: 18, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w700);
+
+final datePicker_selectDate = TextStyle(
+    fontSize: 16, color: dalgeurakGrayFour, fontFamily: 'Pretendard', fontWeight: FontWeight.w500);

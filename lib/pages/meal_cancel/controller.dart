@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class MealCancelPageController extends GetxController with StateMixin {
+  late Rx<PickerDateRange> selectDate = PickerDateRange(null, null).obs;
   TextEditingController reasonTextController = TextEditingController();
   RxMap selectMeal = {
     MealType.breakfast: false,
