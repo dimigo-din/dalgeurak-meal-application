@@ -88,7 +88,10 @@ class ConvenienceFoodPage extends GetView<ConvenienceFoodPageController> {
               ),
               Positioned(
                 bottom: Get.height * 0.09,
-                child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
+                child: GestureDetector(
+                  onTap: () => controller.applicationConvenienceFood(),
+                  child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
+                )
               )
             ],
           )

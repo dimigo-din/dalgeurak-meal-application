@@ -1,42 +1,8 @@
 import 'package:dalgeurak_meal_application/themes/text_theme.dart';
 import 'package:dalgeurak_widget_package/themes/color_theme.dart';
+import 'package:dimigoin_flutter_plugin/dimigoin_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 
-enum ConvenienceFoodType {
-  sandwich,
-  salad,
-  misu,
-  none
-}
-
-extension ConvenienceFoodTypeExtension on ConvenienceFoodType {
-  String get convertKor {
-    switch (this) {
-      case ConvenienceFoodType.sandwich: return "샌드위치";
-      case ConvenienceFoodType.salad: return "샐러드";
-      case ConvenienceFoodType.misu: return "선식";
-      default: return "";
-    }
-  }
-
-  String get convertEng {
-    switch (this) {
-      case ConvenienceFoodType.sandwich: return "sandwich";
-      case ConvenienceFoodType.salad: return "salad";
-      case ConvenienceFoodType.misu: return "misu";
-      default: return "";
-    }
-  }
-
-  String get convertDescription {
-    switch (this) {
-      case ConvenienceFoodType.sandwich: return "다양한 종류의 샌드위치가\n매일매일을 즐겁게 만들거에요";
-      case ConvenienceFoodType.salad: return "신선한 채소와 함께 취향에 맞는\n드레싱을 뿌려 먹어보세요";
-      case ConvenienceFoodType.misu: return "초콜릿, 말차, 견과류, 코코넛 등\n다양한 맛이 준비되어 있어요";
-      default: return "";
-    }
-  }
-}
 
 class FoodSelectContainer extends StatelessWidget {
   final ConvenienceFoodType foodType;
