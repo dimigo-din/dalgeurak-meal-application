@@ -35,7 +35,7 @@ class MealCancelPage extends GetView<MealCancelPageController> {
               Positioned(
                 top: Get.height * 0.15,
                 right: Get.width * 0.1,
-                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("assets/images/icons/close.svg", package: "dalgeurak_meal_application", width: 18, color: Colors.black))
+                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("${DimigoinAccount().isLogin ? "packages/dalgeurak_meal_application/" : ""}assets/images/icons/close.svg", width: 18, color: Colors.black))
               ),
               Positioned(
                 top: Get.height * 0.24,
@@ -130,8 +130,7 @@ class MealCancelPage extends GetView<MealCancelPageController> {
                                   ),
                                   child: Center(
                                     child: SvgPicture.asset(
-                                      "assets/images/icons/calendar.svg",
-                                      package: "dalgeurak_meal_application",
+                                      "${DimigoinAccount().isLogin ? "packages/dalgeurak_meal_application/" : ""}assets/images/icons/calendar.svg",
                                       width: 24,
                                     ),
                                   ),
@@ -152,7 +151,8 @@ class MealCancelPage extends GetView<MealCancelPageController> {
                               GestureDetector(
                                   onTap: () => controller.selectMeal[MealType.lunch] = !controller.selectMeal[MealType.lunch],
                                   child: DalgeurakCheckBox(content: "중식", isOn: controller.selectMeal[MealType.lunch], checkBoxType: DalgeurakCheckBoxType.window)
-                              ),GestureDetector(
+                              ),
+                              GestureDetector(
                                   onTap: () => controller.selectMeal[MealType.dinner] = !controller.selectMeal[MealType.dinner],
                                   child: DalgeurakCheckBox(content: "석식", isOn: controller.selectMeal[MealType.dinner], checkBoxType: DalgeurakCheckBoxType.window)
                               ),

@@ -38,8 +38,7 @@ class FoodSelectContainer extends StatelessWidget {
               ],
             ),
             Image.asset(
-              "assets/images/convenience_${foodType.convertEng}.png",
-              package: "dalgeurak_meal_application",
+              "${DimigoinAccount().isLogin ? "packages/dalgeurak_meal_application/" : ""}assets/images/convenience_${foodType.convertEng}.png",
               width: 80,
             )
           ],
