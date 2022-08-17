@@ -6,11 +6,14 @@ import 'package:get/get.dart';
 
 import '../pages/convenience_food/binding.dart';
 import '../pages/convenience_food/page.dart';
+import '../pages/meal_exception/binding.dart';
+import '../pages/meal_exception/page.dart';
 
 class DalgeurakMealApplicationPages {
   static final pages = [
     GetPage(name: DalgeurakMealApplicationRoutes.PAGELIST, page: () => const PageListPage()),
     GetPage(name: DalgeurakMealApplicationRoutes.CONVENIENCEFOOD, page: () => const ConvenienceFoodPage(), binding: ConvenienceFoodPageBinding()),
     GetPage(name: DalgeurakMealApplicationRoutes.MEALCANCEL, page: () => const MealCancelPage(), binding: MealCancelPageBinding()),
+    GetPage(name: DalgeurakMealApplicationRoutes.MEALEXCEPTION, page: () => const MealExceptionPage(), binding: MealExceptionPageBinding()),
   ];
 }

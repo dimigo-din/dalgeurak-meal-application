@@ -27,6 +27,12 @@ class PageListPage extends StatelessWidget {
             },
             child: const Text("MEALCANCEL"),
           ),
+          TextButton(
+            onPressed: () {
+              Get.toNamed(DalgeurakMealApplicationRoutes.MEALEXCEPTION);
+            },
+            child: const Text("MEALEXCEPTION"),
+          ),
         ],
       ),
     );

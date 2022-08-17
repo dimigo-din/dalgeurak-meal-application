@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-class MealCancelPageController extends GetxController with StateMixin {
+class MealExceptionPageController extends GetxController with StateMixin {
   Rx<PickerDateRange> selectDate = PickerDateRange(null, null).obs;
   TextEditingController reasonTextController = TextEditingController();
-  RxMap selectMeal = {
+
+  RxMap selectMealType = {
+    MealType.breakfast: false,
     MealType.lunch: false,
     MealType.dinner: false,
   }.obs;
+  RxMap selectMealExceptionType = {
+    MealExceptionType.first: false,
+    MealExceptionType.last: false,
+  }.obs;
+
 
   @override
   void onInit() {
