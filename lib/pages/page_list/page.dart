@@ -17,13 +17,13 @@ class PageListPage extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () {
-              Get.toNamed(Routes.CONVENIENCEFOOD);
+              Get.toNamed(DalgeurakMealApplicationRoutes.CONVENIENCEFOOD);
             },
             child: const Text("CONVENIENCEFOOD"),
           ),
           TextButton(
             onPressed: () {
-              Get.toNamed(Routes.MEALCANCEL);
+              Get.toNamed(DalgeurakMealApplicationRoutes.MEALCANCEL);
             },
             child: const Text("MEALCANCEL"),
           ),

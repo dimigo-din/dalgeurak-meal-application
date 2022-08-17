@@ -7,10 +7,10 @@ import 'package:get/get.dart';
 import '../pages/convenience_food/binding.dart';
 import '../pages/convenience_food/page.dart';
 
-class AppPages {
+class DalgeurakMealApplicationPages {
   static final pages = [
-    GetPage(name: Routes.PAGELIST, page: () => const PageListPage()),
-    GetPage(name: Routes.CONVENIENCEFOOD, page: () => const ConvenienceFoodPage(), binding: ConvenienceFoodPageBinding()),
-    GetPage(name: Routes.MEALCANCEL, page: () => const MealCancelPage(), binding: MealCancelPageBinding()),
+    GetPage(name: DalgeurakMealApplicationRoutes.PAGELIST, page: () => const PageListPage()),
+    GetPage(name: DalgeurakMealApplicationRoutes.CONVENIENCEFOOD, page: () => const ConvenienceFoodPage(), binding: ConvenienceFoodPageBinding()),
+    GetPage(name: DalgeurakMealApplicationRoutes.MEALCANCEL, page: () => const MealCancelPage(), binding: MealCancelPageBinding()),
   ];
 }

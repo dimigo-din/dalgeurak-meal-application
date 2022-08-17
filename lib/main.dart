@@ -8,8 +8,8 @@ main() async {
 
   runApp(
     GetMaterialApp(
-      getPages: AppPages.pages,
-      initialRoute: Routes.PAGELIST,
+      getPages: DalgeurakMealApplicationPages.pages,
+      initialRoute: DalgeurakMealApplicationRoutes.PAGELIST,
     ),
   );
 }
