@@ -32,7 +32,7 @@ class ConvenienceFoodPage extends GetView<ConvenienceFoodPageController> {
               Positioned(
                 top: Get.height * 0.15,
                 right: Get.width * 0.1,
-                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("assets/images/icons/close.svg", width: 18, color: Colors.black))
+                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("assets/images/icons/close.svg", package: "dalgeurak_meal_application", width: 18, color: Colors.black))
               ),
               Positioned(
                 top: Get.height * 0.205,

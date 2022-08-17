@@ -73,6 +73,7 @@ class FoodSelectContainer extends StatelessWidget {
             ),
             Image.asset(
               "assets/images/convenience_${foodType.convertEng}.png",
+              package: "dalgeurak_meal_application",
               width: 80,
             )
           ],
