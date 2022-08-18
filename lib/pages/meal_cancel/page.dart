@@ -34,7 +34,7 @@ class MealCancelPage extends GetView<MealCancelPageController> {
               Positioned(
                 top: Get.height * 0.15,
                 right: Get.width * 0.1,
-                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("${DimigoinAccount().isLogin ? "packages/dalgeurak_meal_application/" : ""}assets/images/icons/close.svg", width: 18, color: Colors.black))
+                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("assets/images/close.svg", package: "dalgeurak_widget_package", width: 18, color: Colors.black))
               ),
               Positioned(
                 top: Get.height * 0.24,
