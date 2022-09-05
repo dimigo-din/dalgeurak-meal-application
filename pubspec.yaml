@@ -37,11 +37,9 @@ dependencies:
   dimigoin_flutter_plugin: ^0.4.2
 
   syncfusion_flutter_datepicker: ^20.2.43
-
+  flutter_svg: ^0.23.0+1
 
   get: ^4.6.5
-
-  flutter_svg: ^0.23.0+1
 
 dev_dependencies:
   flutter_test:
