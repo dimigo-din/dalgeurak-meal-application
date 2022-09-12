@@ -12,11 +12,18 @@ import 'package:get/get.dart';
 import '../../themes/text_theme.dart';
 import 'controller.dart';
 
+enum MealCancelPageMode {
+  application,
+  changeStatus
+}
+
 class MealCancelPage extends GetView<MealCancelPageController> {
   const MealCancelPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    MealCancelPageMode pageMode = Get.arguments['pageMode'];
+
     return Scaffold(
       backgroundColor: dalgeurakGrayOne,
       body: Center(
@@ -85,8 +92,11 @@ class MealCancelPage extends GetView<MealCancelPageController> {
                 )
               ),
               Positioned(
-                  bottom: Get.height * 0.12,
+                bottom: Get.height * 0.12,
+                child: GestureDetector(
+                  onTap: () => controller.applicationMealCancel(),
                   child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
+                )
               )
             ],
           )

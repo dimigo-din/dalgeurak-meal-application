@@ -16,8 +16,3 @@ const containerMenu = TextStyle(
 
 final datePicker_selectDate = TextStyle(
     fontSize: 16, color: dalgeurakGrayFour, fontFamily: 'Pretendard', fontWeight: FontWeight.w500);
-
-final choiceUserContainerName = TextStyle(
-    fontSize: 12, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w600);
-final choiceUserContainerId = TextStyle(
-    fontSize: 10, color: dalgeurakGrayFour, fontFamily: 'Pretendard', fontWeight: FontWeight.w600);
