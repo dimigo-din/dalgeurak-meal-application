@@ -53,7 +53,7 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                           SizedBox(height: 10),
                           Text("신청 날짜", style: containerMenu),
                           SizedBox(height: 18),
-                          DateSelectContainer(selectDate: controller.selectDate),
+                          DateSelectContainer(selectDate: controller.selectDate, isEnable: true),
                           SizedBox(height: 32),
                           Text("신청 시간", style: containerMenu),
                           SizedBox(height: 18),
@@ -95,7 +95,7 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                           SizedBox(height: 32),
                           Text("상세 사유", style: containerMenu),
                           SizedBox(height: 18),
-                          ReasonTextField(hintText: "상세사유를 입력해주세요.", textController: controller.reasonTextController, isBig: false),
+                          ReasonTextField(hintText: "상세사유를 입력해주세요.", textController: controller.reasonTextController, isBig: false, isEnable: true),
                           SizedBox(height: 48),
                           Center(child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false))
                         ],

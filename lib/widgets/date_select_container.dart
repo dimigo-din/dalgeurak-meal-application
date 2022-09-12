@@ -10,7 +10,8 @@ import '../../themes/text_theme.dart';
 
 class DateSelectContainer extends StatelessWidget {
   Rx<PickerDateRange> selectDate;
-  DateSelectContainer({required this.selectDate});
+  bool isEnable;
+  DateSelectContainer({required this.selectDate, required this.isEnable});
 
   @override
   Widget build(BuildContext context) {
@@ -45,34 +46,38 @@ class DateSelectContainer extends StatelessWidget {
           }),
         ),
         GestureDetector(
-          onTap: () => Get.dialog(
-              Dialog(
-                child: Container(
-                  height: Get.height * 0.6,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(16))
-                  ),
-                  child: SfDateRangePicker(
-                      selectionMode: DateRangePickerSelectionMode.range,
-                      showActionButtons: true,
-                      confirmText: "선택",
-                      cancelText: "취소",
-                      onCancel: () => Get.back(),
-                      onSubmit: (Object? value) {
-                        try {
-                          PickerDateRange date = (value as PickerDateRange);
-                          selectDate.value = date;
-                        } catch (e) {
-                          DalgeurakToast().show("날짜를 선택하지 않으셨습니다. 선택한 후 다시 시도해주세요.");
-                        } finally {
-                          Get.back();
-                        }
-                      }
-                  ),
-                ),
-              )
-          ),
+          onTap: () {
+            if (isEnable) {
+              Get.dialog(
+                  Dialog(
+                    child: Container(
+                      height: Get.height * 0.6,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16))
+                      ),
+                      child: SfDateRangePicker(
+                          selectionMode: DateRangePickerSelectionMode.range,
+                          showActionButtons: true,
+                          confirmText: "선택",
+                          cancelText: "취소",
+                          onCancel: () => Get.back(),
+                          onSubmit: (Object? value) {
+                            try {
+                              PickerDateRange date = (value as PickerDateRange);
+                              selectDate.value = date;
+                            } catch (e) {
+                              DalgeurakToast().show("날짜를 선택하지 않으셨습니다. 선택한 후 다시 시도해주세요.");
+                            } finally {
+                              Get.back();
+                            }
+                          }
+                      ),
+                    ),
+                  )
+              );
+            }
+          },
           child: Container(
             width: 50,
             height: 45,
