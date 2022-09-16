@@ -13,6 +13,11 @@ const convenienceFood_menuTitle = TextStyle(
 
 const containerMenu = TextStyle(
     fontSize: 18, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w700);
+const exceptionPage_addPeople = TextStyle(
+    fontSize: 14, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w400, decoration: TextDecoration.underline);
+
+final selectWeekDay = TextStyle(
+    fontSize: 16, color: dalgeurakGrayTwo, fontFamily: 'Pretendard', fontWeight: FontWeight.w500);
 
 final datePicker_selectDate = TextStyle(
     fontSize: 16, color: dalgeurakGrayFour, fontFamily: 'Pretendard', fontWeight: FontWeight.w500);
