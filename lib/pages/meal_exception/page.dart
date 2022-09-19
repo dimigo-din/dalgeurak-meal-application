@@ -86,7 +86,10 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: () => controller.selectWeekDay.value = (index+1),
+                            onTap: () {
+                              controller.selectWeekDay.value = (index+1);
+                              controller.getRemainStudentAmount();
+                            },
                             child: Container(
                               width: 16,
                               height: 16,
@@ -113,11 +116,17 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                              onTap: () => controller.selectMealType.value = MealType.lunch,
+                              onTap: () {
+                                controller.selectMealType.value = MealType.lunch;
+                                controller.getRemainStudentAmount();
+                              },
                               child: DalgeurakCheckBox(content: "점심", isOn: controller.selectMealType.value == MealType.lunch, checkBoxType: DalgeurakCheckBoxType.window)
                           ),
                           GestureDetector(
-                              onTap: () => controller.selectMealType.value = MealType.dinner,
+                              onTap: () {
+                                controller.selectMealType.value = MealType.dinner;
+                                controller.getRemainStudentAmount();
+                              },
                               child: DalgeurakCheckBox(content: "저녁", isOn: controller.selectMealType.value == MealType.dinner, checkBoxType: DalgeurakCheckBoxType.window)
                           ),
                         ],
@@ -127,17 +136,16 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                     Text("신청 항목", style: containerMenu.copyWith(fontSize: 17)),
                     SizedBox(height: 16),
                     Obx(() => SizedBox(
-                      width: Get.width * 0.45,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                               onTap: () => controller.selectMealExceptionType.value = MealExceptionType.first,
                               child: DalgeurakCheckBox(content: "선밥", isOn: controller.selectMealExceptionType.value == MealExceptionType.first, checkBoxType: DalgeurakCheckBoxType.window)
                           ),
+                          SizedBox(width: 56),
                           GestureDetector(
                               onTap: () => controller.selectMealExceptionType.value = MealExceptionType.last,
-                              child: DalgeurakCheckBox(content: "후밥", isOn: controller.selectMealExceptionType.value == MealExceptionType.last, checkBoxType: DalgeurakCheckBoxType.window)
+                              child: DalgeurakCheckBox(content: "후밥 (남은 인원 ${controller.remainStudentAmount.value == -1 ? "-" : controller.remainStudentAmount}명)", isOn: controller.selectMealExceptionType.value == MealExceptionType.last, checkBoxType: DalgeurakCheckBoxType.window)
                           ),
                         ],
                       ),

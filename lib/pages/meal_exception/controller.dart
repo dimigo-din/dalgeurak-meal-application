@@ -43,6 +43,8 @@ class MealExceptionPageController extends GetxController with StateMixin {
   Rx<MealExceptionType> selectMealExceptionType = MealExceptionType.normal.obs;
   RxList<DimigoinUser> selectUserList = [].cast<DimigoinUser>().obs;
 
+  RxInt remainStudentAmount = (-1).obs;
+
   DalgeurakService _dalgeurakService = DalgeurakService();
   DalgeurakToast _dalgeurakToast = DalgeurakToast();
 
@@ -73,5 +75,16 @@ class MealExceptionPageController extends GetxController with StateMixin {
 
     _dalgeurakToast.show("선/후밥 신청을 ${result['success'] ? "성공" : "실패"}하였습니다.${result['success'] ? "" : "\n사유: ${result['content']}"}");
     Get.back();
+  }
+
+  getRemainStudentAmount() async {
+    remainStudentAmount.value = -1;
+
+    Map result = await _dalgeurakService.getRemainLastMealExceptionStudentAmount(selectWeekDay.value.convertWeekDayEngStr, selectMealType.value);
+
+    _dalgeurakToast.show("후밥 신청 가능 인원 수 불러오기에 ${result['success'] ? "성공" : "실패"}하였습니다.");
+    if (result['success']) {
+      remainStudentAmount.value = result['content'];
+    }
   }
 }
