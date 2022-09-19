@@ -20,6 +20,7 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Center(
           child: Stack(
@@ -164,7 +165,7 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
               Obx(() => AnimatedPositioned(
                 duration: Duration(milliseconds: 150),
                 curve: Curves.easeIn,
-                bottom: controller.selectUserList.isNotEmpty ? 64 : 120,
+                bottom: controller.selectUserList.isNotEmpty ? 44 : 100,
                 child: GestureDetector(
                   onTap: () => controller.applicationMealException(),
                   child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
