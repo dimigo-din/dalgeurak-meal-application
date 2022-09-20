@@ -60,8 +60,11 @@ class MealExceptionPageController extends GetxController with StateMixin {
       _dalgeurakToast.show("설정되지 않은 칸을 모두 설정 후 다시 시도해주세요.");
       return;
     }
-
-    if (selectUserList.isEmpty) {
+    bool isContainMe = false;
+    selectUserList.forEach((element) {
+      if (element.id! == DimigoinAccount().currentUser.id!) { isContainMe = true; }
+    });
+    if (selectUserList.isNotEmpty && !isContainMe) {
       selectUserList.add(DimigoinAccount().currentUser);
     }
 
