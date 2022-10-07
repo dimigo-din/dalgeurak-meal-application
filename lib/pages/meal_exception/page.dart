@@ -155,10 +155,6 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                     Text("상세 사유", style: containerMenu.copyWith(fontSize: 17)),
                     SizedBox(height: 16),
                     OneLineTextField(hintText: "상세사유를 입력해주세요.", textController: controller.reasonTextController, isEnable: true),
-                    SizedBox(height: 28),
-                    Text("연락처", style: containerMenu.copyWith(fontSize: 17)),
-                    SizedBox(height: 16),
-                    OneLineTextField(hintText: "문제 발생 이외의 용도로 사용하지 않습니다.", textController: controller.phoneNumTextController, isEnable: true),
                   ],
                 )
               ),

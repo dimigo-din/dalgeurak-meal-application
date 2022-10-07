@@ -36,7 +36,6 @@ extension WeekDayEnumExtension on int {
 class MealExceptionPageController extends GetxController with StateMixin {
   Rx<PickerDateRange> selectDate = PickerDateRange(null, null).obs;
   TextEditingController reasonTextController = TextEditingController();
-  TextEditingController phoneNumTextController = TextEditingController();
 
   Rx<int> selectWeekDay = 0.obs;
   Rx<MealType> selectMealType = MealType.none.obs;
