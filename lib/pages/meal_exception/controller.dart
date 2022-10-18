@@ -70,7 +70,7 @@ class MealExceptionPageController extends GetxController with StateMixin {
     Map result = await _dalgeurakService.setUserMealException(
         selectMealExceptionType.value,
         reasonTextController.text,
-        selectUserList.map((element) => element.id!).cast<String>().toList(),
+        selectUserList.map((element) => element.id!).cast<int>().toList(),
         selectMealType.value,
         selectWeekDay.value.convertWeekDayEngStr
     );
