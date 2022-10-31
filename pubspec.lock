@@ -48,7 +48,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: fbc68a5d2a02ba23ba37f942853139c7f6527693
+      resolved-ref: "2b32601051d5b2ad8b47787304bcdebc5d5ea666"
       url: "https://github.com/dimigoin/dalgeurak-widget-package.git"
     source: git
     version: "0.0.2"
@@ -58,7 +58,7 @@ packages:
       name: dimigoin_flutter_plugin
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.10"
+    version: "0.5.11"
   dio:
     dependency: transitive
     description:
