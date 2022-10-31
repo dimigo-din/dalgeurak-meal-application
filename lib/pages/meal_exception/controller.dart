@@ -54,6 +54,7 @@ class MealExceptionPageController extends GetxController with StateMixin {
     super.onInit();
   }
 
+  /*
   applicationMealException() async {
     if (selectMealExceptionType.value == MealExceptionType.normal || selectMealType.value == MealType.none || selectWeekDay.value == 0) {
       _dalgeurakToast.show("설정되지 않은 칸을 모두 설정 후 다시 시도해주세요.");
@@ -77,16 +78,11 @@ class MealExceptionPageController extends GetxController with StateMixin {
 
     _dalgeurakToast.show("선/후밥 신청을 ${result['success'] ? "성공" : "실패"}하였습니다.${result['success'] ? "" : "\n사유: ${result['content']}"}");
     Get.back();
-  }
+  }*/
 
-  getRemainStudentAmount() async {
+  getRemainStudentAmount() async { //삭제 예정으로 디미고인 API 연동 임시 제거하였습니다.
     remainStudentAmount.value = -1;
 
-    Map result = await _dalgeurakService.getRemainLastMealExceptionStudentAmount(selectWeekDay.value.convertWeekDayEngStr, selectMealType.value);
-
-    _dalgeurakToast.show("후밥 신청 가능 인원 수 불러오기에 ${result['success'] ? "성공" : "실패"}하였습니다.");
-    if (result['success']) {
-      remainStudentAmount.value = result['content'];
-    }
+    _dalgeurakToast.show("후밥 신청 가능 인원 수 불러오기에 실패하였습니다.");
   }
 }

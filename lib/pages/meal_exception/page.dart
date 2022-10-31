@@ -5,6 +5,7 @@ import 'package:dalgeurak_widget_package/widgets/blue_button.dart';
 import 'package:dalgeurak_widget_package/widgets/checkbox.dart';
 import 'package:dalgeurak_widget_package/widgets/choice_user_container.dart';
 import 'package:dalgeurak_widget_package/widgets/oneline_textfield.dart';
+import 'package:dalgeurak_widget_package/widgets/toast.dart';
 import 'package:dalgeurak_widget_package/widgets/window_title.dart';
 import 'package:dimigoin_flutter_plugin/dimigoin_flutter_plugin.dart';
 import 'package:flutter/material.dart';
@@ -163,7 +164,7 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
                 curve: Curves.easeIn,
                 bottom: controller.selectUserList.isNotEmpty ? 44 : 100,
                 child: GestureDetector(
-                  onTap: () => controller.applicationMealException(),
+                  onTap: () => DalgeurakToast().show("현재 신청이 되지 않습니다."),//controller.applicationMealException(),
                   child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
                 ),
               ))
