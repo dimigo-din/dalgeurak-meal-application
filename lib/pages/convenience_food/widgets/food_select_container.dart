@@ -2,13 +2,15 @@ import 'package:dalgeurak_meal_application/themes/text_theme.dart';
 import 'package:dalgeurak_widget_package/themes/color_theme.dart';
 import 'package:dimigoin_flutter_plugin/dimigoin_flutter_plugin.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 
 class FoodSelectContainer extends StatelessWidget {
   final ConvenienceFoodType foodType;
-  final int leftPeopleAmount;
+  final String leftPeopleAmount;
+  final DateTime lastRefreshDate;
   final bool isSelect;
-  FoodSelectContainer({required this.foodType, required this.leftPeopleAmount, required this.isSelect});
+  FoodSelectContainer({required this.foodType, required this.leftPeopleAmount, required this.lastRefreshDate, required this.isSelect});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,14 @@ class FoodSelectContainer extends StatelessWidget {
                 SizedBox(height: 8),
                 Text("${foodType.convertDescription}", style: foodSelectContainer_foodDescription.copyWith(color: (isSelect ? Colors.white : Colors.black))),
                 SizedBox(height: 14),
-                Text("남은 인원 : $leftPeopleAmount명", style: foodSelectContainer_leftPeople.copyWith(color: (isSelect ? Colors.white : Colors.black)))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("남은 인원 : $leftPeopleAmount명", style: foodSelectContainer_leftPeople.copyWith(color: (isSelect ? Colors.white : Colors.black))),
+                    const SizedBox(width: 10),
+                    Text(DateFormat('MM.dd kk시 mm분 기준').format(lastRefreshDate), style: foodSelectContainer_refreshTime)
+                  ],
+                )
               ],
             ),
             Image.asset(

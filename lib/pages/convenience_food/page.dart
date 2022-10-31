@@ -45,12 +45,12 @@ class ConvenienceFoodPage extends GetView<ConvenienceFoodPageController> {
                 child: Obx(() => Row(
                   children: [
                     GestureDetector(
-                      onTap: () => controller.selectMealType.value = MealType.breakfast,
+                      onTap: () => controller.changeMealTypeMenu(MealType.breakfast),
                       child: BlueButton(content: "아침", isLong: false, isSmall: true, isFill: true, isDisable: !(controller.selectMealType.value == MealType.breakfast)),
                     ),
                     SizedBox(width: 10),
                     GestureDetector(
-                        onTap: () => controller.selectMealType.value = MealType.dinner,
+                        onTap: () => controller.changeMealTypeMenu(MealType.dinner),
                         child: BlueButton(content: "저녁", isLong: false, isSmall: true, isFill: true, isDisable: !(controller.selectMealType.value == MealType.dinner))
                     ),
                   ],
@@ -77,7 +77,8 @@ class ConvenienceFoodPage extends GetView<ConvenienceFoodPageController> {
                           onTap: () => controller.selectConvenienceFoodType.value = menuList[index],
                           child: FoodSelectContainer(
                               foodType: menuList[index],
-                              leftPeopleAmount: 50,
+                              leftPeopleAmount: controller.convenienceFoodRemainAmount[menuList[index]],
+                              lastRefreshDate: controller.lastRefreshTime.value,
                               isSelect: controller.selectConvenienceFoodType.value == menuList[index]
                           ),
                         ));

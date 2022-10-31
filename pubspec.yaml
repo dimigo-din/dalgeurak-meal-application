@@ -34,10 +34,12 @@ dependencies:
       url: https://github.com/dimigoin/dalgeurak-widget-package.git
       ref: main
 
-  dimigoin_flutter_plugin: ^0.5.9
+  dimigoin_flutter_plugin: ^0.5.10
 
   syncfusion_flutter_datepicker: ^20.2.43
   flutter_svg: ^0.23.0+1
+
+  intl: ^0.17.0
 
   get: ^4.6.5
 
