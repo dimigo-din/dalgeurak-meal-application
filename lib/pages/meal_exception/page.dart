@@ -12,7 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../routes/routes.dart';
 import '../../themes/text_theme.dart';
+import '../exception_type_select/widgets/exception_type_container.dart';
 import 'controller.dart';
 
 class MealExceptionPage extends GetView<MealExceptionPageController> {
@@ -24,151 +26,160 @@ class MealExceptionPage extends GetView<MealExceptionPageController> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Center(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                top: Get.height * 0.085,
-                left: Get.width * 0.1,
-                child: WindowTitle(
-                  subTitle: "선/후밥",
-                  title: "신청",
-                ),
-              ),
-              Positioned(
-                top: Get.height * 0.12,
-                right: Get.width * 0.1,
-                child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("assets/images/close.svg", package: "dalgeurak_widget_package", width: 18, color: Colors.black))
-              ),
-              Positioned(
-                top: Get.height * 0.19,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text("명단", style: containerMenu.copyWith(fontSize: 17)),
-                        SizedBox(width: 16),
-                        GestureDetector(
-                          onTap: () => showSearch(context: Get.context!, delegate: _StudentMultipleChoice()),
-                          child: Text("추가하기", style: exceptionPage_addPeople),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    Obx(() => AnimatedSize(
-                      duration: Duration(milliseconds: 150),
-                      curve: Curves.easeIn,
-                      child: SizedBox(
-                        width: 290,
-                        height: controller.selectUserList.isNotEmpty ? 75 : 0,
-                        child: ListView.builder(
-                          itemCount: controller.selectUserList.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return ChoiceUserContainer(
-                              choiceUser: controller.selectUserList[index],
-                              choiceUserList: controller.selectUserList,
-                              onClick: () => controller.selectUserList.removeAt(index),
-                              isSearchPage: false,
-                            );
-                          },
-                        )
-                      ),
-                    )),
-                    SizedBox(height: 16),
-                    Text("신청 요일", style: containerMenu.copyWith(fontSize: 17)),
-                    SizedBox(height: 16),
-                    SizedBox(
-                      width: 290,
-                      height: 20,
-                      child: ListView.builder(
-                        itemCount: 5,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              controller.selectWeekDay.value = (index+1);
-                              controller.getRemainStudentAmount();
-                            },
-                            child: Container(
-                              width: 16,
-                              height: 16,
-                              margin: EdgeInsets.only(right: 52),
-                              color: Colors.transparent,
-                              child: Obx(() => Text(
-                                  (index+1).convertWeekDayKorStr,
-                                  style: selectWeekDay.copyWith(
-                                    color: (controller.selectWeekDay.value == (index+1) ? dalgeurakBlueOne : selectWeekDay.color),
-                                    fontWeight: (controller.selectWeekDay.value == (index+1) ? FontWeight.w700 : selectWeekDay.fontWeight)
-                                  )
-                              )),
+          child: SafeArea(
+            child: SizedBox(
+              width: Get.width,
+              height: Get.height,
+              child: SingleChildScrollView(
+                child: SizedBox(
+                  width: Get.width,
+                  height: Get.height,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 24),
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(width: Get.width, height: 64),
+                          Positioned(
+                            left: Get.width * 0.1,
+                            child: WindowTitle(
+                              subTitle: "선/후밥",
+                              title: "신청",
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 28),
-                    Text("신청 시간", style: containerMenu.copyWith(fontSize: 17)),
-                    SizedBox(height: 16),
-                    Obx(() => SizedBox(
-                      width: Get.width * 0.45,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                              onTap: () {
-                                controller.selectMealType.value = MealType.lunch;
-                                controller.getRemainStudentAmount();
-                              },
-                              child: DalgeurakCheckBox(content: "점심", isOn: controller.selectMealType.value == MealType.lunch, checkBoxType: DalgeurakCheckBoxType.window)
                           ),
-                          GestureDetector(
-                              onTap: () {
-                                controller.selectMealType.value = MealType.dinner;
-                                controller.getRemainStudentAmount();
-                              },
-                              child: DalgeurakCheckBox(content: "저녁", isOn: controller.selectMealType.value == MealType.dinner, checkBoxType: DalgeurakCheckBoxType.window)
+                          Positioned(
+                              right: Get.width * 0.1,
+                              child: GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset("assets/images/close.svg", package: "dalgeurak_widget_package", width: 18, color: Colors.black))
                           ),
                         ],
                       ),
-                    )),
-                    SizedBox(height: 28),
-                    Text("신청 항목", style: containerMenu.copyWith(fontSize: 17)),
-                    SizedBox(height: 16),
-                    Obx(() => SizedBox(
-                      child: Row(
+                      const SizedBox(height: 24),
+                      Row(
                         children: [
+                          const SizedBox(width: 42),
+                          Text("명단", style: containerMenu.copyWith(fontSize: 17)),
+                          SizedBox(width: 16),
                           GestureDetector(
-                              onTap: () => controller.selectMealExceptionType.value = MealExceptionType.first,
-                              child: DalgeurakCheckBox(content: "선밥", isOn: controller.selectMealExceptionType.value == MealExceptionType.first, checkBoxType: DalgeurakCheckBoxType.window)
-                          ),
-                          SizedBox(width: 56),
-                          GestureDetector(
-                              onTap: () => controller.selectMealExceptionType.value = MealExceptionType.last,
-                              child: DalgeurakCheckBox(content: "후밥 (남은 인원 ${controller.remainStudentAmount.value == -1 ? "-" : controller.remainStudentAmount}명)", isOn: controller.selectMealExceptionType.value == MealExceptionType.last, checkBoxType: DalgeurakCheckBoxType.window)
-                          ),
+                            onTap: () => showSearch(context: Get.context!, delegate: _StudentMultipleChoice()),
+                            child: Text("추가하기", style: exceptionPage_addPeople),
+                          )
                         ],
                       ),
-                    )),
-                    SizedBox(height: 28),
-                    Text("상세 사유", style: containerMenu.copyWith(fontSize: 17)),
-                    SizedBox(height: 16),
-                    OneLineTextField(hintText: "상세사유를 입력해주세요.", textController: controller.reasonTextController, isEnable: true),
-                  ],
-                )
-              ),
-              Obx(() => AnimatedPositioned(
-                duration: Duration(milliseconds: 150),
-                curve: Curves.easeIn,
-                bottom: controller.selectUserList.isNotEmpty ? 44 : 100,
-                child: GestureDetector(
-                  onTap: () => DalgeurakToast().show("현재 신청이 되지 않습니다."),//controller.applicationMealException(),
-                  child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
+                      SizedBox(height: 16),
+                      Obx(() => AnimatedSize(
+                        duration: Duration(milliseconds: 150),
+                        curve: Curves.easeIn,
+                        child: SizedBox(
+                            width: 290,
+                            height: controller.selectUserList.isNotEmpty ? 75 : 0,
+                            child: ListView.builder(
+                              itemCount: controller.selectUserList.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                return ChoiceUserContainer(
+                                  choiceUser: controller.selectUserList[index],
+                                  choiceUserList: controller.selectUserList,
+                                  onClick: () => controller.selectUserList.removeAt(index),
+                                  isSearchPage: false,
+                                );
+                              },
+                            )
+                        ),
+                      )),
+                      SizedBox(height: 16),
+                      Row(
+                        children: [
+                          const SizedBox(width: 42),
+                          Text("* 신청 목록", style: containerMenu.copyWith(fontSize: 17)),
+                          SizedBox(width: 16),
+                          GestureDetector(
+                            onTap: () => controller.getSelectExceptionList(),
+                            child: Text("설정하기", style: exceptionPage_addPeople),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          const SizedBox(width: 28),
+                          Obx(() {
+                            int exceptionListAmount = controller.selectExceptionKindList.length;
+
+                            return SizedBox(
+                              width: 300,
+                              height: ((exceptionListAmount / 2).floor() * 80) + ((exceptionListAmount == 1) ? 70 : 0),
+                              child: ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: exceptionListAmount,
+                                itemBuilder: (context, index) {
+                                  if (index % 2 != 0) { return SizedBox(); }
+
+                                  if (index == (exceptionListAmount-1)) {
+                                    return Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        ExceptionTypeContainer(
+                                          weekday: controller.selectExceptionKindList[index].weekDay!.convertWeekDayKorStr,
+                                          mealType: controller.selectExceptionKindList[index].mealType!,
+                                          exceptionType: controller.selectExceptionKindList[index].exceptionType!,
+                                          isEnable: false,
+                                          isApplicationPage: true,
+                                        ),
+                                        const SizedBox(width: 120, height: 40)
+                                      ],
+                                    );
+
+                                  }
+
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      ExceptionTypeContainer(
+                                        weekday: controller.selectExceptionKindList[index].weekDay!.convertWeekDayKorStr,
+                                        mealType: controller.selectExceptionKindList[index].mealType!,
+                                        exceptionType: controller.selectExceptionKindList[index].exceptionType!,
+                                        isEnable: false,
+                                        isApplicationPage: true,
+                                      ),
+                                      ExceptionTypeContainer(
+                                        weekday: controller.selectExceptionKindList[index+1].weekDay!.convertWeekDayKorStr,
+                                        mealType: controller.selectExceptionKindList[index+1].mealType!,
+                                        exceptionType: controller.selectExceptionKindList[index+1].exceptionType!,
+                                        isEnable: false,
+                                        isApplicationPage: true,
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
+                      const SizedBox(height: 42),
+                      Row(
+                        children: [
+                          const SizedBox(width: 42),
+                          Text("* 상세 사유", style: containerMenu.copyWith(fontSize: 17)),
+                        ],
+                      ),
+                      SizedBox(height: 16),
+                      OneLineTextField(hintText: "상세사유를 입력해주세요.", textController: controller.reasonTextController, isEnable: true),
+                      SizedBox(height: 24),
+                      Text("별도로 앱에 신청 현황이 표시되지 않으니\n신청 전 스크린샷을 찍어두세요", style: exceptionPage_screenshot, textAlign: TextAlign.center),
+                      SizedBox(height: 42),
+                      GestureDetector(
+                          onTap: () => controller.applicationMealException(),
+                          child: BlueButton(content: "신청", isLong: false, isSmall: false, isFill: true, isDisable: false)
+                      ),
+                    ],
+                  ),
                 ),
-              ))
-            ],
+              ),
+            ),
           )
       ),
     );

@@ -1,8 +1,10 @@
+import 'package:dalgeurak_meal_application/models/meal_exception_kind.dart';
 import 'package:dalgeurak_widget_package/widgets/toast.dart';
 import 'package:dimigoin_flutter_plugin/dimigoin_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
+import '../../routes/routes.dart';
 
 extension WeekDayEnumExtension on int {
   String get convertWeekDayKorStr {
@@ -34,13 +36,10 @@ extension WeekDayEnumExtension on int {
 
 
 class MealExceptionPageController extends GetxController with StateMixin {
-  Rx<PickerDateRange> selectDate = PickerDateRange(null, null).obs;
   TextEditingController reasonTextController = TextEditingController();
 
-  Rx<int> selectWeekDay = 0.obs;
-  Rx<MealType> selectMealType = MealType.none.obs;
-  Rx<MealExceptionType> selectMealExceptionType = MealExceptionType.normal.obs;
   RxList<DimigoinUser> selectUserList = [].cast<DimigoinUser>().obs;
+  RxList<MealExceptionKind> selectExceptionKindList = [].cast<MealExceptionKind>().obs;
 
   RxInt remainStudentAmount = (-1).obs;
 
@@ -54,9 +53,16 @@ class MealExceptionPageController extends GetxController with StateMixin {
     super.onInit();
   }
 
-  /*
+  getSelectExceptionList() async {
+    try {
+      List<MealExceptionKind> selectExceptionList = await Get.toNamed(DalgeurakMealApplicationRoutes.MEALEXCEPTIONTYPESELECT);
+
+      selectExceptionKindList.value = selectExceptionList;
+    } catch (e) {} //선후밥 종류 선택 화면에서 뒤로가기를 눌렀을 경우
+  }
+
   applicationMealException() async {
-    if (selectMealExceptionType.value == MealExceptionType.normal || selectMealType.value == MealType.none || selectWeekDay.value == 0) {
+    if (selectExceptionKindList.isEmpty || reasonTextController.text.isEmpty) {
       _dalgeurakToast.show("설정되지 않은 칸을 모두 설정 후 다시 시도해주세요.");
       return;
     }
@@ -68,17 +74,27 @@ class MealExceptionPageController extends GetxController with StateMixin {
       selectUserList.add(DimigoinAccount().currentUser);
     }
 
+    List<MealType> mealTypeList = [];
+    List<String> dateList = [];
+    List<MealExceptionType> exceptionList = [];
+    selectExceptionKindList.forEach((element) {
+      mealTypeList.add(element.mealType!);
+      dateList.add(element.weekDay!.convertWeekDayEngStr);
+      exceptionList.add(element.exceptionType!);
+    });
+
     Map result = await _dalgeurakService.setUserMealException(
-        selectMealExceptionType.value,
-        reasonTextController.text,
-        selectUserList.map((element) => element.id!).cast<int>().toList(),
-        selectMealType.value,
-        selectWeekDay.value.convertWeekDayEngStr
+      mealTypeList,
+      dateList,
+      exceptionList,
+      reasonTextController.text,
+      selectUserList.map((element) => element.id!).cast<int>().toList(),
     );
+
 
     _dalgeurakToast.show("선/후밥 신청을 ${result['success'] ? "성공" : "실패"}하였습니다.${result['success'] ? "" : "\n사유: ${result['content']}"}");
     Get.back();
-  }*/
+  }
 
   getRemainStudentAmount() async { //삭제 예정으로 디미고인 API 연동 임시 제거하였습니다.
     remainStudentAmount.value = -1;

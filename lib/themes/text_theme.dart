@@ -20,6 +20,14 @@ const exceptionPage_addPeople = TextStyle(
 final exceptionPage_screenshot = TextStyle(
     fontSize: 13, color: dalgeurakGrayThree, fontFamily: 'Pretendard', fontWeight: FontWeight.w700);
 
+const exceptionTypeSelectPage_title = TextStyle(
+    fontSize: 15, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w600);
+
+const exceptionTypeContainer_title = TextStyle(
+    fontSize: 14, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w600);
+final exceptionTypeContainer_remainAmount = TextStyle(
+    fontSize: 13, color: dalgeurakGrayFour, fontFamily: 'Pretendard', fontWeight: FontWeight.w500);
+
 final selectWeekDay = TextStyle(
     fontSize: 16, color: dalgeurakGrayTwo, fontFamily: 'Pretendard', fontWeight: FontWeight.w500);
 
