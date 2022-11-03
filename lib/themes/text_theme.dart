@@ -12,6 +12,8 @@ final foodSelectContainer_refreshTime = TextStyle(
 
 const convenienceFood_menuTitle = TextStyle(
     fontSize: 15, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w700);
+final convenienceFood_warning = TextStyle(
+    fontSize: 14, color: dalgeurakBlueOne, fontFamily: 'Pretendard', fontWeight: FontWeight.w600);
 
 const containerMenu = TextStyle(
     fontSize: 18, color: Colors.black, fontFamily: 'Pretendard', fontWeight: FontWeight.w700);
