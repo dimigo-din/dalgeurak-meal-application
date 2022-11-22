@@ -48,7 +48,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "8448973db50e9d0fbb581fa5086c5f9b947113a8"
+      resolved-ref: b65b23355274213a3357d91018033bb17bcf0c77
       url: "https://github.com/dimigoin/dalgeurak-widget-package.git"
     source: git
     version: "0.0.2"
@@ -58,7 +58,7 @@ packages:
       name: dimigoin_flutter_plugin
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.15"
+    version: "1.0.0"
   dio:
     dependency: transitive
     description:
@@ -200,6 +200,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
+  jwt_decoder:
+    dependency: transitive
+    description:
+      name: jwt_decoder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   korea_regexp:
     dependency: transitive
     description:
@@ -421,14 +428,14 @@ packages:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.3.52"
+    version: "20.3.58"
   syncfusion_flutter_datepicker:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_datepicker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.3.52"
+    version: "20.3.58"
   term_glyph:
     dependency: transitive
     description:
@@ -463,7 +470,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.1"
   xdg_directories:
     dependency: transitive
     description:
