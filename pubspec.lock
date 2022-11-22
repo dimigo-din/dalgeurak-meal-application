@@ -48,7 +48,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: b65b23355274213a3357d91018033bb17bcf0c77
+      resolved-ref: "23f9bcddc2a334a61208b319bcf3070de667c756"
       url: "https://github.com/dimigoin/dalgeurak-widget-package.git"
     source: git
     version: "0.0.2"
