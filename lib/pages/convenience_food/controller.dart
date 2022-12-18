@@ -60,7 +60,12 @@ class ConvenienceFoodPageController extends GetxController with StateMixin {
   applicationConvenienceFood() async {
     if (selectConvenienceFoodType.value == ConvenienceFoodType.none) { _dalgeurakToast.show("메뉴가 선택되지 않았습니다."); return; }
 
-    Map result = await _dalgeurakService.applicationConvenienceFood(selectMealType.value, selectConvenienceFoodType.value);
+    Map result;
+    if (DimigoinAccount().currentUser.userType != DimigoinUserType.teacher) {
+      result = await _dalgeurakService.applicationConvenienceFood(selectMealType.value, selectConvenienceFoodType.value);
+    } else {
+      result = await _dalgeurakService.applicationTeacherConvenienceFood(Get.arguments['studentUid'], selectMealType.value, selectConvenienceFoodType.value);
+    }
 
     if (result['success']) {
       _dalgeurakToast.show("신청에 성공하였습니다.");
